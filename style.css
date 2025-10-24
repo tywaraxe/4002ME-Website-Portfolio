@@ -1,0 +1,112 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background: #111;
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 2px solid #c00;
+}
+h1 {
+  color: #ff3333;
+  margin-bottom: 0.5rem;
+}
+h2 {
+  color: #ff3333;
+  border-bottom: 1px solid #ff3333;
+  padding-bottom: 0.25rem;
+}
+section {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+.image-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.image-grid img {
+  width: 45%;
+  border: 2px solid #ff3333;
+  border-radius: 10px;
+}
+#viewer-container {
+  width: 100%;
+  height: 500px;
+  border: 2px solid #ff3333;
+  border-radius: 10px;
+}
+footer {
+  background: #111;
+  text-align: center;
+  padding: 1rem;
+  border-top: 2px solid #c00;
+}
+/* Styles for the fixed video link in the bottom right corner */
+#video-link-fixed {
+    /* Fixed positioning ensures it stays in place when scrolling */
+    position: fixed;
+    bottom: 20px; /* 20px up from the bottom edge */
+    right: 20px; /* 20px in from the right edge */
+    width: 150px; /* Set the size of your GIF container */
+    height: 150px;
+    z-index: 1000; /* Ensures it is on top of all other content */
+    border: 3px solid #ff3333; /* Matches your motorsport theme */
+    border-radius: 10px;
+    overflow: hidden; 
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.9); /* Glow effect */
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+#video-link-fixed:hover {
+    /* Optional: Small lift effect when hovering */
+    transform: scale(1.05);
+}
+
+#gif-placeholder {
+    width: 100%;
+    height: 100%;
+    /* Ensures the GIF covers the entire container without distortion */
+    object-fit: cover; 
+    display: block;
+}
+/* Container for video demonstration */
+#video-ratio-wrapper {
+    /* 16:9 Aspect Ratio Calculation: (9 / 16) * 100% = 56.25% */
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* This padding determines the height for 16:9 */
+}
+
+/* This container holds the actual content and is positioned absolutely over the padding area */
+#video-link-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Re-adding your visual styles */
+    border: 2px solid #ff3333;
+    background-color: #0a0a0a;
+    border-radius: 10px;
+    overflow: hidden; /* Ensures the image doesn't break out */
+}
+
+/* Styles for the image inside the link */
+#video-link-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    display: block;
+}
+
+/* You can remove the old #video-link-container style if it was still in your CSS */
+/* #video-link-container { height: 300px; } */
