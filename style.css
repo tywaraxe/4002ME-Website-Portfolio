@@ -1,149 +1,215 @@
+/* Global Reset and Typography */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #0a0a0a;
-  color: #e0e0e0;
-  margin: 0;
-  padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0a0a0a; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll on mobile */
 }
+
+/* Header & Titles */
 header {
-  background: #111;
-  padding: 2rem;
-  text-align: center;
-  border-bottom: 2px solid #c00;
+    background: #111;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 2px solid #ff3333; /* Red accent border */
 }
+
 h1 {
-  color: #ff3333;
-  margin-bottom: 0.5rem;
+    color: #ff3333;
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
 }
+
 h2 {
-  color: #ff3333;
-  border-bottom: 1px solid #ff3333;
-  padding-bottom: 0.25rem;
+    color: #ff3333;
+    border-bottom: 1px solid #ff3333;
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+    font-size: 1.8rem;
 }
+
 section {
-  padding: 2rem;
-  max-width: 1000px;
-  margin: auto;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
 }
-.image-grid {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.image-grid img {
-  width: 45%;
-  border: 2px solid #ff3333;
-  border-radius: 10px;
-}
-#viewer-container {
-  width: 100%;
-  height: 500px;
-  border: 2px solid #ff3333;
-  border-radius: 10px;
-}
+
 footer {
-  background: #111;
-  text-align: center;
-  padding: 1rem;
-  border-top: 2px solid #c00;
-}
-/* Styles for the fixed video link in the bottom right corner */
-#video-link-fixed {
-    /* Fixed positioning ensures it stays in place when scrolling */
-    position: fixed;
-    bottom: 20px; /* 20px up from the bottom edge */
-    right: 20px; /* 20px in from the right edge */
-    width: 150px; /* Set the size of your GIF container */
-    height: 150px;
-    z-index: 1000; /* Ensures it is on top of all other content */
-    border: 3px solid #ff3333; /* Matches your motorsport theme */
-    border-radius: 10px;
-    overflow: hidden; 
-    box-shadow: 0 0 15px rgba(255, 51, 51, 0.9); /* Glow effect */
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    background: #111;
+    text-align: center;
+    padding: 1rem;
+    border-top: 2px solid #ff3333;
+    margin-top: 40px;
 }
 
-#video-link-fixed:hover {
-    /* Optional: Small lift effect when hovering */
-    transform: scale(1.05);
+/* Image Grid */
+.image-grid {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 1rem;
 }
 
-#gif-placeholder {
-    width: 100%;
-    height: 100%;
-    /* Ensures the GIF covers the entire container without distortion */
-    object-fit: cover; 
-    display: block;
-}
-/* Container for video demonstration */
-#video-ratio-wrapper {
-    /* 16:9 Aspect Ratio Calculation: (9 / 16) * 100% = 56.25% */
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%; /* This padding determines the height for 16:9 */
+.image-grid p {
+    flex-basis: 100%;
+    text-align: center;
 }
 
-/* This container holds the actual content and is positioned absolutely over the padding area */
-#video-link-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    
-    /* Re-adding your visual styles */
-    border: 2px solid #ff3333;
-    background-color: #0a0a0a;
-    border-radius: 10px;
-    overflow: hidden; /* Ensures the image doesn't break out */
-}
-
-/* Styles for the image inside the link */
-#video-link-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image covers the area without distortion */
-    display: block;
-}
-/* --- Stylized Media Player --- */
-
-#media-player-container {
+.image-grid img {
+    width: 48%; /* Adjusted for better spacing */
     max-width: 450px;
-    margin: 1rem auto 0;
+    border: 3px solid #ff3333;
+    border-radius: 12px;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.image-grid img:hover {
+    transform: scale(1.02);
+}
+
+/* 3D Viewer Container (Corrected Selector) */
+#stl-viewer-container {
+    /* Selector updated from #viewer-container to match HTML */
+    width: 100%;
+    max-width: 900px; /* Constrain max size */
+    height: 500px;
+    border: 3px solid #ff3333;
+    border-radius: 12px;
+    margin: 2rem auto; /* Center it */
+    background-color: #333333;
+    box-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
+    overflow: hidden;
+}
+
+/* Model Controls */
+#model-controls {
+    text-align: center;
+    margin: 1rem auto;
+    padding: 15px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    border: 1px solid #333;
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    justify-content: center;
+    align-items: center;
+    gap: 15px 25px; /* Vertical and horizontal gap */
+    max-width: 600px;
+}
+
+#model-controls label {
+    color: #ff3333;
+    font-weight: 600;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+#model-color {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 3px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+#model-color::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+#model-color::-webkit-color-swatch {
+    border: none;
+    border-radius: 5px;
+}
+#model-color::-moz-color-swatch {
+    border: none;
+    border-radius: 5px;
+}
+
+/* Swatch Buttons */
+#color-swatches {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 1;
+}
+
+.swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid #e0e0e0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.15s ease, border-color 0.15s ease;
+    padding: 0;
+    background-color: currentColor; /* Allows setting color via style attribute */
+}
+
+.swatch:hover {
+    transform: scale(1.1);
+    border-color: #ff3333; 
+}
+
+
+/* Media Player */
+#media-player-container {
+    max-width: 350px;
+    margin: 1rem auto;
     padding: 10px;
     background-color: #1a1a1a;
     border-radius: 8px;
     border: 1px solid #ff3333;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    min-height: 50px;
 }
 
 .player-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
-/* Left Side: Icon & Title/Status */
 .player-info {
     display: flex;
     align-items: center;
+    flex-grow: 1;
+    min-width: 0;
 }
 
 .player-icon {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     background-color: #ff3333;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    margin-right: 10px;
-    font-size: 1.5rem;
+    margin-right: 8px;
+    font-size: 1.2rem;
     color: #1a1a1a;
+    flex-shrink: 0;
+    font-weight: bold;
+}
+
+.song-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 1;
+    min-width: 0;
 }
 
 .song-title {
@@ -153,19 +219,25 @@ footer {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 150px;
+    max-width: 120px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
 }
 
 .stream-status {
     font-size: 0.75rem;
     color: #ccc;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
 }
 
-/* Right Side: Volume */
 .player-controls {
     display: flex;
     align-items: center;
     gap: 5px;
+    flex-shrink: 0;
 }
 
 .volume-icon {
@@ -173,13 +245,14 @@ footer {
     color: #ff3333;
 }
 
-/* Customizing the Volume Slider */
+/* Volume Slider */
 #volume-slider {
-    width: 80px;
+    width: 70px;
     height: 4px;
-    -webkit-appearance: none;
     background: #555;
     border-radius: 2px;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 #volume-slider::-webkit-slider-thumb {
@@ -192,20 +265,114 @@ footer {
     cursor: pointer;
 }
 
-/* Progress Bar Styling (Static for streams) */
+#volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: #ff3333;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+/* Progress Bar Styling */
 .progress-bar-container {
     height: 3px;
     width: 100%;
     background-color: #333;
-    margin-top: 10px;
+    margin-top: 5px;
     border-radius: 1.5px;
+    overflow: hidden;
 }
 
 .progress-bar-fill {
     height: 100%;
     background-color: #ff3333;
     border-radius: 1.5px;
-    /* This width is just for styling/placeholder effect */
+    transition: width 0.1s linear;
 }
-/* You can remove the old #video-link-container style if it was still in your CSS */
-/* #video-link-container { height: 300px; } */
+
+
+/* Video Demonstration Container */
+#video-ratio-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#video-link-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #ff3333;
+    background-color: #0a0a0a;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#video-link-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* Fixed GIF Link */
+#video-link-fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    height: 150px;
+    z-index: 1000;
+    border: 3px solid #ff3333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.9);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+#video-link-fixed:hover {
+    transform: scale(1.05);
+}
+
+#gif-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    section {
+        padding: 1rem;
+    }
+    .image-grid {
+        gap: 1rem;
+    }
+    .image-grid img {
+        width: 100%;
+        max-width: none;
+    }
+    #stl-viewer-container {
+        height: 350px;
+    }
+    #video-link-fixed {
+        width: 100px;
+        height: 100px;
+        bottom: 10px;
+        right: 10px;
+    }
+}
