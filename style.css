@@ -107,6 +107,105 @@ footer {
     object-fit: cover; /* Ensures the image covers the area without distortion */
     display: block;
 }
+/* --- Stylized Media Player --- */
 
+#media-player-container {
+    max-width: 450px;
+    margin: 1rem auto 0;
+    padding: 10px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    border: 1px solid #ff3333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.player-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Left Side: Icon & Title/Status */
+.player-info {
+    display: flex;
+    align-items: center;
+}
+
+.player-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #ff3333;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 1.5rem;
+    color: #1a1a1a;
+}
+
+.song-title {
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.stream-status {
+    font-size: 0.75rem;
+    color: #ccc;
+}
+
+/* Right Side: Volume */
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.volume-icon {
+    font-size: 1.2rem;
+    color: #ff3333;
+}
+
+/* Customizing the Volume Slider */
+#volume-slider {
+    width: 80px;
+    height: 4px;
+    -webkit-appearance: none;
+    background: #555;
+    border-radius: 2px;
+}
+
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #ff3333;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Progress Bar Styling (Static for streams) */
+.progress-bar-container {
+    height: 3px;
+    width: 100%;
+    background-color: #333;
+    margin-top: 10px;
+    border-radius: 1.5px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #ff3333;
+    border-radius: 1.5px;
+    /* This width is just for styling/placeholder effect */
+}
 /* You can remove the old #video-link-container style if it was still in your CSS */
 /* #video-link-container { height: 300px; } */
