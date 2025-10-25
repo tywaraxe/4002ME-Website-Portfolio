@@ -1,7 +1,13 @@
+// Variable to hold the STL mesh object globally so the color picker can access it
+let stlMesh;
+
 // --- Initialization ---
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize the 3D Viewer
     initStlViewer();
+    
+    // Initialize the Color Picker logic, now including swatches, color picker, and metallic slider
+    setupColorPicker(); 
     
     // Initialize the Audio Player and Controls
     setupPlayerControls();
@@ -15,11 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // -------------------------------------------------------------------
 
 function initStlViewer() {
-    // This looks for the HTML element with the ID 'stl-viewer-container'
     const container = document.getElementById('stl-viewer-container');
     if (!container) {
         console.error("Error: Could not find HTML element with ID 'stl-viewer-container'.");
-        return; // Exit if the container isn't found
+        return;
     }
 
     const width = container.clientWidth;
@@ -27,7 +32,7 @@ function initStlViewer() {
 
     // --- 1. Scene Setup ---
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf0f0f0); // Light gray background
+    scene.background = new THREE.Color(0x6f6f6f); // Light gray background
 
     // --- 2. Camera Setup ---
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
@@ -38,64 +43,100 @@ function initStlViewer() {
     renderer.setSize(width, height);
     container.appendChild(renderer.domElement);
 
-    // --- 4. Lighting ---
-    scene.add(new THREE.AmbientLight(0x404040, 3)); 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5);
+    // -------------------------------------------------------------------
+    // --- 4. Lighting - UPDATED FOR BRIGHTNESS & PBR REFLECTIONS ---
+    // -------------------------------------------------------------------
+    
+    // **1. Hemisphere Light (New: Provides soft, ambient light from above/below)**
+    // This is great for a bright, evenly lit environment.
+    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 2); // Sky color, ground color, intensity
+    scene.add(hemisphereLight);
+
+    // **2. Ambient Light (Reduced, as Hemisphere does most of the heavy lifting)**
+    scene.add(new THREE.AmbientLight(0xffffff, 0.0)); 
+
+    // **3. Key Directional Light (Increased Intensity)**
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 5); // Intensity increased from 2.5 to 5
     directionalLight.position.set(1, 1, 1).normalize();
     scene.add(directionalLight);
+    
+    // **4. Back Light / Fill Light (Increased Intensity)**
+    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 3); // Intensity increased from 1.5 to 3
+    directionalLight2.position.set(-1, -1, -1).normalize();
+    scene.add(directionalLight2);
+    // -------------------------------------------------------------------
 
-    // --- 5. Controls (Requires OrbitControls.js to be included in HTML) ---
+    // --- 5. Controls (Requires OrbitControls.js) ---
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true; 
 
-    // --- 6. Load STL Model ---
+    // ... (rest of the initStlViewer function remains the same) ...
+
+    // --- 6. Load STL Model & Texture ---
     const loader = new THREE.STLLoader();
-    
-    // Ensure the file path is correct (forward slashes only)
-    loader.load(
-        'assets/gtr.stl', 
-        function (geometry) {
-            // Center the model's geometry for better viewing
-            geometry.center(); 
-            
-            // Create a material
-            const material = new THREE.MeshPhongMaterial({ 
-                color: 0x007bff, // Blue
-                specular: 0x494949, 
-                shininess: 200 
-            });
-            
-            const mesh = new THREE.Mesh(geometry, material);
-            scene.add(mesh);
+    const textureLoader = new THREE.TextureLoader(); // Initialize texture loader
+    // ... (texture loading and geometry loading remains the same) ...
+    const textureUrl = 'https://placehold.co/512x512/333333/dddddd/png?text=CHECKERED+Texture';
 
-            // Set camera position based on the loaded model's size
-            const boundingBox = new THREE.Box3().setFromObject(mesh);
-            const size = boundingBox.getSize(new THREE.Vector3());
-            const maxDim = Math.max(size.x, size.y, size.z);
-            
-            // Adjust camera to view the entire model
-            camera.position.z = maxDim * 1.5; 
-            camera.position.y = maxDim * 0.2; // Slightly above center
-            camera.lookAt(0, 0, 0); // Focus on the model center
-
-            // Start the render loop only once the model is loaded
-            animate();
+    // Start by loading the texture
+    textureLoader.load(
+        textureUrl,
+        // Success callback for texture loading
+        (texture) => {
+            loadGeometry(texture);
         },
         // Progress callback (optional)
-        (xhr) => {
-            console.log('STL Load Progress:', (xhr.loaded / xhr.total * 100).toFixed(2) + '%');
-        },
-        // Error callback (optional)
+        (xhr) => { console.log('Texture Load Progress:', (xhr.loaded / xhr.total * 100).toFixed(2) + '%'); },
+        // Error callback for texture loading
         (error) => {
-            // This will log the 404 error if 'assets/gtr.stl' is not found
-            console.error('An error happened loading the STL file. Check path/file name:', error);
+            console.error('An error happened loading the Texture. Falling back to solid color.', error);
+            loadGeometry(null);
         }
     );
+
+    // Helper function to handle geometry loading regardless of texture success
+    function loadGeometry(texture) {
+        // Ensure the file path is correct
+        loader.load(
+            'assets/gtr.stl', 
+            function (geometry) {
+                geometry.center(); 
+                
+                // --- MeshStandardMaterial is maintained ---
+                const materialProperties = {
+                    color: 0x5C3347, 
+                    metalness: 0.8, 
+                    roughness: 0.2, 
+                };
+
+                if (texture) {
+                    materialProperties.map = texture; 
+                }
+                
+                const material = new THREE.MeshStandardMaterial(materialProperties);
+                stlMesh = new THREE.Mesh(geometry, material);
+                scene.add(stlMesh);
+
+                // Set camera position based on the loaded model's size
+                const boundingBox = new THREE.Box3().setFromObject(stlMesh);
+                const size = boundingBox.getSize(new THREE.Vector3());
+                const maxDim = Math.max(size.x, size.y, size.z);
+                
+                camera.position.z = maxDim * 1.5; 
+                camera.position.y = maxDim * 0.2; 
+                camera.lookAt(0, 0, 0); 
+
+                animate();
+            },
+            (xhr) => { console.log('STL Load Progress:', (xhr.loaded / xhr.total * 100).toFixed(2) + '%'); },
+            (error) => { console.error('An error happened loading the STL file. Check path/file name:', error); }
+        );
+    }
 
     // --- 7. Animation/Render Loop (Defined locally to avoid global conflicts) ---
     function animate() {
         requestAnimationFrame(animate);
-        controls.update(); // Required if damping is enabled
+        controls.update(); 
         renderer.render(scene, camera);
     }
     
@@ -109,6 +150,66 @@ function initStlViewer() {
         renderer.setSize(newWidth, newHeight);
     });
 }
+
+// -------------------------------------------------------------------
+// Color Picker, Swatch, and METALLIC SLIDER Logic
+// -------------------------------------------------------------------
+
+function setupColorPicker() {
+    // UPDATED IDs to match your new HTML
+    const colorPicker = document.getElementById('base-color-picker');
+    const metallicSlider = document.getElementById('metallic-slider');
+    const colorSwatches = document.querySelectorAll('#color-swatches .swatch');
+
+    if (!colorPicker || !metallicSlider) {
+        console.error("Error: Could not find HTML element with ID 'base-color-picker' or 'metallic-slider'.");
+        return;
+    }
+
+    // Helper function to apply color and metallic changes
+    const applyModelChanges = (newColor, newMetallic) => {
+        if (stlMesh && stlMesh.material) {
+            // Apply new color (tints the material)
+            stlMesh.material.color.set(newColor);
+            
+            // Apply new metallic value (only works with MeshStandardMaterial or similar)
+            stlMesh.material.metalness = newMetallic;
+            
+            // Note: You can add a roughness slider here too, stlMesh.material.roughness = newRoughness;
+        }
+    };
+    
+
+    // 1. Listen for the 'input' event on the main color picker for real-time updates
+    colorPicker.addEventListener('input', (event) => {
+        // Use the current metallic value
+        const currentMetallic = parseFloat(metallicSlider.value);
+        applyModelChanges(event.target.value, currentMetallic);
+    });
+    
+    // 2. Listen for the 'input' event on the metallic slider
+    metallicSlider.addEventListener('input', (event) => {
+        // Use the current color value
+        const currentColor = colorPicker.value;
+        const newMetallic = parseFloat(event.target.value);
+        applyModelChanges(currentColor, newMetallic);
+    });
+    
+    // 3. Setup Swatch Click Handlers
+    colorSwatches.forEach(swatch => {
+        swatch.addEventListener('click', () => {
+            const newColor = swatch.getAttribute('data-color');
+            const currentMetallic = parseFloat(metallicSlider.value);
+            
+            // Apply changes
+            applyModelChanges(newColor, currentMetallic);
+            
+            // Update the main color picker value to reflect the selected swatch
+            colorPicker.value = newColor;
+        });
+    });
+}
+
 
 // -------------------------------------------------------------------
 // Audio Player Logic
