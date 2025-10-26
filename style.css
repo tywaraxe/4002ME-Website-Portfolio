@@ -1,11 +1,11 @@
 /* --- 1. BASE & TYPOGRAPHY (Modern Dark Theme) --- */
 :root {
-    --color-primary: #e0e0e0; 
-    --color-background: #0a0a0a; 
-    --color-accent: #ff3333; 
-    --color-secondary-bg: #1a1a1a; 
-    --color-border: #333333; 
-    --font-primary: 'Inter', sans-serif; 
+    --color-primary: #e0e0e0;
+    --color-background: #0a0a0a;
+    --color-accent: #ff3333;
+    --color-secondary-bg: #1a1a1a;
+    --color-border: #333333;
+    --font-primary: 'Inter', sans-serif;
 }
 
 * {
@@ -24,7 +24,9 @@ body {
 }
 
 /* Base Headings */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-weight: 700;
     text-transform: uppercase;
 }
@@ -45,7 +47,7 @@ section {
     margin: 0 auto;
     padding: 4rem 2rem;
     border-bottom: 1px solid var(--color-border);
-    position: relative; 
+    position: relative;
 }
 
 /* --- 2. HEADER & PARALLAX EFFECT --- */
@@ -56,12 +58,13 @@ section {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    /* Desktop Parallax */
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6); 
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
 }
 
 .hero-content {
@@ -73,7 +76,7 @@ section {
 .project-title {
     font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 900;
-    letter-spacing: 0.25em; 
+    letter-spacing: 0.25em;
     margin-bottom: 0.5rem;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
@@ -108,13 +111,14 @@ section {
 /* --- 3. IMAGES & MEDIA --- */
 .image-grid {
     display: grid;
+    /* Ensures 2 columns on desktop, scaling down */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     margin-top: 1rem;
 }
 
 .image-grid p {
-    grid-column: 1 / -1; 
+    grid-column: 1 / -1;
     text-align: center;
     font-style: italic;
     color: #aaa;
@@ -140,7 +144,7 @@ section {
 #video-ratio-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 56.25%; 
+    padding-top: 56.25%;
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
@@ -173,18 +177,17 @@ section {
 /* --- 4. 3D VIEWER & CONTROLS --- */
 #stl-viewer-section {
     background-color: var(--color-secondary-bg);
-    
     box-shadow: 0 0 25px rgba(255, 51, 51, 0.7);
     border-radius: 12px;
 }
 
 #stl-viewer-container {
     width: 100%;
-    max-width: 900px; 
+    max-width: 900px;
     height: 500px;
     border: 3px solid var(--color-accent);
     border-radius: 12px;
-    margin: 2rem auto; 
+    margin: 2rem auto;
     background-color: #0a0a0a;
     box-shadow: 0 0 25px rgba(255, 51, 51, 0.7);
     overflow: hidden;
@@ -198,16 +201,17 @@ section {
     background-color: var(--color-secondary-bg);
     border-radius: 10px;
     border: 1px solid var(--color-border);
-    
+
     display: grid;
+    /* Ensures minimum width of 200px per control group on desktop */
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px 25px; 
+    gap: 15px 25px;
     align-items: center;
     max-width: 900px;
 }
 
-#model-controls > div:last-child {
-    grid-column: 1 / -1; 
+#model-controls>div:last-child {
+    grid-column: 1 / -1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -222,21 +226,21 @@ section {
     margin-bottom: 5px;
 }
 
-/* Swatch Buttons - Retaining your great dark-theme style */
+/* Swatch Buttons */
 .swatch {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     cursor: pointer;
-    border: 3px solid var(--color-primary); 
+    border: 3px solid var(--color-primary);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     transition: transform 0.15s ease, border-color 0.15s ease;
-    background-color: currentColor; 
+    background-color: currentColor;
 }
 
 .swatch:hover {
     transform: scale(1.15);
-    border-color: var(--color-accent); 
+    border-color: var(--color-accent);
 }
 
 /* Range Slider Styling (Metallic Slider) */
@@ -314,13 +318,11 @@ input[type="range"]::-webkit-slider-thumb {
 /* Fixed GIF/Video Link */
 #video-link-fixed {
     position: fixed;
-    bottom: 20px; 
+    bottom: 20px;
     left: 20px;
-    
-    /* UPDATED: Wider width */
-    width: 120px; 
-    
-    height: 120px; /* Adjusted height to fit content better */
+
+    width: 120px;
+    height: 120px;
     z-index: 1000;
     border: 3px solid var(--color-accent);
     border-radius: 10px;
@@ -331,26 +333,24 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 #video-link-fixed:hover {
-    transform: scale(1.02); /* Slight scale for hover effect */
+    transform: scale(1.02);
 }
 
 #gif-placeholder {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the container without distortion */
+    object-fit: cover;
     display: block;
 }
 
-/* Audio Player - Positioned to clear and stack on top of the fixed GIF */
+/* Audio Player - Desktop Position */
 #media-player-container {
     position: fixed;
-    /* Calculation: 20px (GIF bottom) + 120px (GIF height) + 15px (gap) = 155px from bottom */
-    bottom: 20px; 
+    bottom: 20px;
     right: 20px;
-    
-    /* UPDATED: Wider width */
+
     width: 300px;
-    
+
     background: rgba(17, 17, 17, 0.95);
     backdrop-filter: blur(5px);
     z-index: 100;
@@ -374,11 +374,18 @@ input[type="range"]::-webkit-slider-thumb {
     min-width: 0;
 }
 
+.song-details {
+    /* Ensures text doesn't push the player controls off-screen */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .player-icon {
     width: 35px;
     height: 35px;
     background-color: var(--color-accent);
-    color: var(--color-secondary-bg); 
+    color: var(--color-secondary-bg);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -431,61 +438,139 @@ footer {
 }
 
 
-/* --- 8. MOBILE RESPONSIVENESS --- */
+/* ------------------------------------------------------------------- */
+/* 📱 8. MOBILE RESPONSIVENESS */
+/* ------------------------------------------------------------------- */
 @media (max-width: 768px) {
+
+    /* General Structure */
     h2 {
         font-size: 1.5rem;
+        margin-top: 2rem;
     }
-    
+
     section {
         padding: 2rem 1rem;
     }
-    
+
+    /* Parallax Performance Fix */
+    .hero-parallax-section {
+        /* Disables fixed background on mobile for smoother scrolling performance */
+        background-attachment: scroll;
+    }
+
+    /* Title and Tagline Sizing */
+    .project-title {
+        font-size: 1.8rem;
+        letter-spacing: 0.15em;
+    }
+
+    .project-tagline {
+        font-size: 1rem;
+        padding: 0 10px;
+        /* Add some padding to prevent overflow */
+    }
+
+    /* Image Grids (Inspiration & Design) */
+    .image-grid {
+        /* Forces a single column layout on smaller screens */
+        grid-template-columns: 1fr;
+    }
+
+    /* 3D Model Controls */
     #model-controls {
+        /* Force controls to stack vertically */
         grid-template-columns: 1fr;
         gap: 1rem;
+        padding: 15px 10px;
     }
-    
-    #model-controls > div:last-child {
+
+    #model-controls>div:last-child {
+        /* Ensure swatches wrap if necessary */
+        flex-wrap: wrap;
         justify-content: center;
     }
 
-    /* Move fixed audio player and GIF to center-bottom, stacking them vertically */
-    
-    /* GIF */
+    #stl-viewer-container {
+        /* Reduce the height of the 3D viewer on mobile */
+        height: 350px;
+    }
+
+    /* Team Grid */
+    .team-grid {
+        /* Forces a single column layout */
+        grid-template-columns: 1fr;
+    }
+
+    .team-member {
+        padding: 1rem;
+    }
+
+    /* Fixed Elements: Convert to static (or near-static) to prevent covering content and improve scroll */
+
+    /* GIF/Video Link */
     #video-link-fixed {
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
-        /* UPDATED: Wider mobile width */
-        width: 95%; /* Make it take up more space on smaller screens */
-        height: 80px;
-        bottom: 10px;
+        /* Removed 'fixed' positioning. Now it sits in the footer flow. */
+        position: static;
+        margin: 1.5rem auto 0.5rem auto;
+        /* Centered in the footer */
+        transform: none;
+        /* Removed transform */
+        width: 100px;
+        height: 100px;
+        display: block;
+
     }
 
     /* Audio Player */
     #media-player-container {
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
-        /* UPDATED: Wider mobile width */
-        width: 95%; 
-        /* Calculation: 10px (GIF bottom) + 80px (GIF height) + 10px (gap) = 100px from the bottom */
-        bottom: 100px; 
+        /* Removed 'fixed' positioning. Stays in the header area. */
+        position: static;
+        margin: 2rem auto 0 auto;
+        transform: none;
+        width: 95%;
+        /* Use full width for a better UI experience */
+        max-width: 400px;
+        /* Re-inject the audio player into the hero content flow by using absolute position within the static header, or simply let it flow */
     }
-    
+
+    /* Re-position the Audio Player under the main hero content */
+    .hero-parallax-section {
+        /* Change from flex-align-center to flex-end so player can be positioned below content */
+        align-items: flex-end;
+    }
+
+    #media-player-container {
+        /* Absolute position under hero text but above the header's bottom edge */
+        position: absolute;
+        bottom: 20px;
+        right: 50%;
+        transform: translateX(50%);
+        width: 95%;
+        max-width: 400px;
+    }
+
+    /* Audio Player Layout Refinement */
     .player-content {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
+    .player-info {
+        width: 100%;
+        /* Take full width */
+        margin-bottom: 5px;
+    }
+
     .player-controls {
         width: 100%;
-        margin-top: 10px;
-        justify-content: space-between;
+        margin-top: 5px;
+        justify-content: flex-start;
+        /* Keep controls left-aligned */
     }
-    
-    .song-title {
-        max-width: 100%;
+
+    /* Volume Slider needs to take up most of the space */
+    .player-controls input[type="range"] {
+        flex-grow: 1;
     }
 }
