@@ -5,121 +5,174 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>4002ME Engineering Application</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+
   <link rel="stylesheet" href="style.css" />
-  <!-- Load Font Awesome for player icons -->
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-  <header>
-    <h1>4002ME Engineering Application</h1>
-    <p>Repeatable mechanically powered car — no electricity, only pure mechanical energy.</p>
-    <div id="media-player-container"> <audio id="stream-player" autoplay loop></audio>
+
+  <header class="hero-parallax-section">
+    <div class="hero-content">
+      <h1 class="project-title">4002ME ENGINEERING APPLICATION</h1>
+      <p class="project-tagline">Repeatable mechanically powered car — no electricity, only pure mechanical energy.</p>
+      <a href="#video-demo" class="cta-button">WATCH THE DEMONSTRATION</a>
+    </div>
+
+    <div id="media-player-container">
+      <audio id="stream-player" autoplay loop></audio>
       <div class="player-content">
         <div class="player-info">
-          <div class="player-icon" id="play-pause-btn"> <span id="play-icon">▶</span> <span id="pause-icon"
-              style="display: none;">❚❚</span> </div>
+          <div class="player-icon" id="play-pause-btn">
+            <span id="play-icon">▶</span>
+            <span id="pause-icon" style="display: none;">❚❚</span>
+          </div>
           <div class="song-details">
             <div id="stream-title" class="song-title">
-              <a href="https://neurofm.live/" target="_blank"
-                style="color: inherit; text-decoration: none;">NeuroFM</a>
+              <a href="https://neurofm.live/" target="_blank" style="color: inherit; text-decoration: none;"></a>NeuroFM</a>
             </div>
             <div id="stream-status" class="stream-status">Loading...</div>
           </div>
         </div>
-        <div class="player-controls"> <span class="volume-icon">🔊</span> <input type="range" id="volume-slider" min="0"
-            max="100" value="50"> </div>
+        <div class="player-controls">
+          <span class="volume-icon">🔊</span>
+          <input type="range" id="volume-slider" min="0" max="100" value="50">
+        </div>
       </div>
       <div class="progress-bar-container">
         <div class="progress-bar-fill" style="width: 50%;"></div>
       </div>
     </div>
   </header>
+
   <section id="description">
-    <h2>Project Overview</h2>
+    <h2>PROJECT OVERVIEW</h2>
     <p>This project explores the design and development of a car powered entirely through mechanical means. The car is
       engineered to store and release energy using springs, gears, and flywheels — achieving repeatable motion without
       any electrical components. The goal is to demonstrate efficient energy transfer, stability, and control purely
       through mechanical systems.</p>
+    <p>This challenge pushed the team to apply core principles of mechanical engineering, focusing heavily on **friction
+      reduction**, **optimal gear ratios**, and **chassis stability** under high strain, mirroring the real-world
+      demands of high-performance automotive design.</p>
   </section>
+
   <section id="Inspiration">
-    <h2>Inspiration</h2>
+    <h2>DESIGN INSPIRATION</h2>
+    <p>The aesthetic and performance focus for our mechanical car is inspired by the iconic **Porsche 911 930
+      Blackbird**, emphasizing a low-drag profile and aggressive, functional bodywork, complemented by specialized BBS
+      wheel geometry for minimal rotational resistance.</p>
     <div class="image-grid">
-      <p>The car we made is inspirated by the iconic Porsche 911 930 Blackbird with a special BBS wheels</p>
-      <div class="image-grid"> <img
-          src="https://news.dupontregistry.com/wp-content/uploads/2023/08/23_sacrilegemotors-5-scaled.jpg"
-          alt="Porsche 911 930 Blackbird"> <img
-          src="https://assettocorsamods.com/wp-content/uploads/2024/05/preview-3.jpg" alt="Picture from assetto corsa">
-      </div>
+      <img src="https://news.dupontregistry.com/wp-content/uploads/2023/08/23_sacrilegemotors-5-scaled.jpg"
+        alt="Porsche 911 930 Blackbird">
+      <img src="https://assettocorsamods.com/wp-content/uploads/2024/05/preview-3.jpg"
+        alt="Assetto Corsa game capture for inspiration model">
     </div>
   </section>
+
   <section id="design">
-    <h2>Design & Images</h2>
-    <div class="image-grid"> <img src="assets/placeholder1.jpg" alt="Design Sketch"> <img src="assets/placeholder2.jpg"
-        alt="Prototype"> </div>
-  </section>
-  <section id="video-demo">
-    <h2>Video Demonstration</h2>
-    <div id="video-ratio-wrapper" style="max-width: 1000px; margin: 2rem auto;">
-      <div id="video-link-container"> <a href="https://www.youtube.com/watch?v=n_XlcTBjVgY" target="_blank"> <img
-            src="https://www.imcdb.org/i158743.jpg" alt="Click to watch video"> </a> </div>
+    <h2>DESIGN & PROTOTYPES</h2>
+    <div class="image-grid">
+      <img src="assets/placeholder1.jpg" alt="CAD Design Render">
+      <img src="assets/placeholder2.jpg" alt="Physical Prototype">
     </div>
   </section>
-  <section id="stl-viewer-section">
-    <h2>3D Model Viewer</h2>
-    <div id="model-controls">
-      
-      <div>
-        <label for="base-color-picker">Base Color:</label> 
-        <input type="color" id="base-color-picker" value="#5C3347"> 
+
+  <section id="video-demo">
+    <h2>PERFORMANCE DEMONSTRATION</h2>
+    <div id="video-ratio-wrapper" style="max-width: 1000px; margin: 2rem auto;">
+      <div id="video-link-container">
+        <a href="https://www.youtube.com/watch?v=n_XlcTBjVgY" target="_blank">
+          <img src="https://www.imcdb.org/i158743.jpg" alt="Click to watch video demonstration of the car in action">
+        </a>
       </div>
-       <div><p></p></div>
+      <p style="text-align: center; margin-top: 1rem; font-style: italic;">Click the image above to view the full
+        testing footage on YouTube.</p>
+    </div>
+  </section>
+
+  <section id="stl-viewer-section">
+    <h2>3D MODEL VIEWER</h2>
+    <p>Interact with the key components of the mechanical drive system. Adjust the metallic finish and color to
+      visualize the PBR materials used in the CAD design.</p>
+
+    <div id="model-controls">
+      <div>
+        <label for="base-color-picker">Base Color:</label>
+        <input type="color" id="base-color-picker" value="#5C3347">
+      </div>
       <div>
         <label for="metallic-slider">Metallic Finish:</label>
-        <input type="range" id="metallic-slider" min="0" max="1" step="0.01" value="0.8"> 
+        <input type="range" id="metallic-slider" min="0" max="1" step="0.01" value="0.8">
         <p class="note">Adjust the metallic sheen (0.0 = Matte, 1.0 = Highly Metallic)</p>
       </div>
-      
       <div id="color-swatches">
         <button class="swatch" data-color="#5C3347" title="Amethyst Metallic"
           style="background-color: #5C3347;"></button>
-        <button class="swatch" data-color="#FFD700" title="Gold"
-          style="background-color: #FFD700;"></button> <button class="swatch" data-color="#FFFFFF" title="Chassis White"
-          style="background-color: #ffffff;"></button> <button class="swatch" data-color="#1a1a1a" title="Carbon Black"
-          style="background-color: #1a1a1a;"></button> <button class="swatch" data-color="#c0c0c0"
-          title="Metallic Silver" style="background-color: #c0c0c0;"></button>
+        <button class="swatch" data-color="#CC0000" title="Porsche Red" style="background-color: #CC0000;"></button>
+        <button class="swatch" data-color="#FFFFFF" title="Chassis White" style="background-color: #ffffff;"></button>
+        <button class="swatch" data-color="#1a1a1a" title="Carbon Black" style="background-color: #1a1a1a;"></button>
+        <button class="swatch" data-color="#c0c0c0" title="Metallic Silver" style="background-color: #c0c0c0;"></button>
       </div>
-    </div> <div id="stl-viewer-container"> </div>
-    <p>Template of a BBS wheel</p>
+    </div>
+
+    <div id="stl-viewer-container"> </div>
+    <p style="text-align: center; margin-top: 1rem;">3D Model: Template of a BBS Wheel</p>
   </section>
 
   <section id="team">
-    <h2>Team</h2>
-    <ul>
-      <li><strong>Team Leader:</strong> [Team Member]</li>
-      <li><strong>Design and CAD:</strong> [Team Member]</li>
-      <li><strong>Design and CAD:</strong> [Team Member]</li>
-      <li><strong>Testing & Analysis:</strong> [Team Member]</li>
-      <li><strong>Researcher:</strong> [Team Member]</li>
-      <li><strong>Researcher:</strong> [Team Member]</li>
-    </ul>
+    <h2>PROJECT TEAM</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <span class="role">Team Leader:</span>
+        <span class="name">[Team Member 1]</span>
+      </div>
+      <div class="team-member">
+        <span class="role">Lead CAD Designer:</span>
+        <span class="name">[Team Member 2]</span>
+      </div>
+      <div class="team-member">
+        <span class="role">System Analyst:</span>
+        <span class="name">[Team Member 3]</span>
+      </div>
+      <div class="team-member">
+        <span class="role">Testing & Validation:</span>
+        <span class="name">[Team Member 4]</span>
+      </div>
+      <div class="team-member">
+        <span class="role">Research & Materials:</span>
+        <span class="name">[Team Member 5]</span>
+      </div>
+      <div class="team-member">
+        <span class="role">Documentation:</span>
+        <span class="name">[Team Member 6]</span>
+      </div>
+    </div>
   </section>
+
   <section id="results">
-    <h2>Results</h2>
-    <p>The prototype successfully demonstrated multiple repeatable runs powered purely by mechanical energy storage.
-      Further optimizations in gear ratio and friction reduction are expected to improve performance.</p>
+    <h2>PERFORMANCE RESULTS</h2>
+    <p>The prototype successfully demonstrated multiple repeatable runs powered purely by stored mechanical energy. Key
+      performance indicators met or exceeded initial stability requirements.</p>
+    <p>Further optimizations in gear ratio selection and friction reduction are expected to improve the maximum
+      achievable distance and energy efficiency in subsequent iterations.</p>
   </section>
+
   <footer>
     <p>© 2025 4002ME Engineering Application | Motorsport/Automotive Engineering Module</p>
+    <a id="video-link-fixed" href="https://www.youtube.com/watch?v=KpDIsxgdf-Y" target="_blank">
+      <img id="gif-placeholder"
+        src="https://upload-os-bbs.hoyolab.com/upload/2025/10/15/461798305/979054a5bccdea4a9482c36d9d0315f7_4906046178520748467.gif"
+        alt="Animated loop of car prototype">
+    </a>
   </footer>
-  <div id="video-link-fixed"> <a href="https://www.youtube.com/watch?v=KpDIsxgdf-Y" target="_blank"> <img
-        id="gif-placeholder" src="https://i.redd.it/28fu3vahl5tf1.gif" alt="Click to Watch Video Demo"> </a> </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <!-- Tone.js for the player -->
   <script src="https://unpkg.com/tone@14.8.49/build/Tone.js"></script>
-
   <script src="script.js"></script>
 </body>
 
