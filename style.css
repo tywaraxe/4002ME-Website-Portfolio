@@ -50,7 +50,7 @@ section {
     position: relative;
 }
 
-/* --- 2. HEADER & PARALLAX EFFECT --- */
+/* --- 2. HEADER & PARALLAX EFFECT (DESKTOP) --- */
 
 .hero-parallax-section {
     position: relative;
@@ -58,10 +58,9 @@ section {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    /* Desktop Parallax */
+    /* Parallax enabled for DESKTOP */
     height: 100vh;
     display: flex;
-    /* Changed to column and center to control stacking */
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -205,7 +204,6 @@ section {
     border: 1px solid var(--color-border);
 
     display: grid;
-    /* Ensures minimum width of 200px per control group on desktop */
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px 25px;
     align-items: center;
@@ -315,14 +313,13 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 
-/* --- 6. FIXED ELEMENTS (Audio Player and Video GIF) --- */
+/* --- 6. FIXED ELEMENTS (Audio Player and Video GIF) - DESKTOP ONLY --- */
 
-/* Fixed GIF/Video Link */
+/* Fixed GIF/Video Link - Hidden by default on small screens */
 #video-link-fixed {
     position: fixed;
     bottom: 20px;
     left: 20px;
-
     width: 120px;
     height: 120px;
     z-index: 1000;
@@ -332,6 +329,8 @@ input[type="range"]::-webkit-slider-thumb {
     box-shadow: 0 0 15px rgba(255, 51, 51, 0.7);
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
+    display: none;
+    /* HIDDEN BY DEFAULT on small screens */
 }
 
 #video-link-fixed:hover {
@@ -345,14 +344,12 @@ input[type="range"]::-webkit-slider-thumb {
     display: block;
 }
 
-/* Audio Player - Desktop Position */
+/* Audio Player - Desktop Position - Hidden by default on small screens */
 #media-player-container {
     position: fixed;
     bottom: 20px;
     right: 20px;
-
     width: 300px;
-
     background: rgba(17, 17, 17, 0.95);
     backdrop-filter: blur(5px);
     z-index: 100;
@@ -360,6 +357,8 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 10px;
     border: 1px solid var(--color-accent);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+    display: none;
+    /* HIDDEN BY DEFAULT on small screens */
 }
 
 .player-content {
@@ -377,7 +376,6 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .song-details {
-    /* Ensures text doesn't push the player controls off-screen */
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -428,7 +426,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 
-/* --- 7. FOOTER --- */
+/* --- 7. FOOTER (Modified to hold mobile elements) --- */
 
 footer {
     background: var(--color-secondary-bg);
@@ -437,6 +435,26 @@ footer {
     border-top: 2px solid var(--color-accent);
     font-size: 0.85rem;
     color: #999;
+
+    /* Setup Flex container for mobile stacking */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+
+/* ------------------------------------------------------------------- */
+/* 💻 DESKTOP ONLY - SHOW FIXED ELEMENTS */
+/* ------------------------------------------------------------------- */
+@media (min-width: 769px) {
+
+    /* Screens 769px and wider are considered desktop */
+    #video-link-fixed,
+    #media-player-container {
+        display: block;
+        /* Show the FIXED version only on desktop */
+    }
 }
 
 
@@ -444,80 +462,95 @@ footer {
 /* 📱 8. MOBILE RESPONSIVENESS (AGGRESSIVE FIXES) */
 /* ------------------------------------------------------------------- */
 @media (max-width: 768px) {
-    
+
     /* === GENERAL STRUCTURE === */
     section {
-        padding: 2rem 1rem;
-    }
+        padding: 2rem 1rem;
+    }
+
+    /* === HERO SECTION FIXES (CRITICAL) === */
+    .hero-parallax-section {
+        /* FIX: DISABLING PARALLAX and enforcing non-fixed height */
+        background-attachment: scroll !important;
+        /* Forces the override */
+        height: auto;
+        padding-top: 80px;
+        padding-bottom: 60px;
+        justify-content: center;
+    }
 
     /* 2. AGGRESSIVE FONT SIZING AND SPACING */
     .project-title {
-        font-size: 1.8rem; /* Smaller title */
-        letter-spacing: 0.05em; /* Much tighter spacing */
-        line-height: 1.1; /* Tighter line height to prevent vertical overlap */
+        font-size: 1.8rem;
+        letter-spacing: 0.05em;
+        line-height: 1.1;
         margin-bottom: 0.5rem;
     }
 
     .project-tagline {
-        font-size: 0.95rem; 
-        margin-bottom: 2rem; /* Ensure space before the CTA */
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
     }
-    
+
     .cta-button {
         padding: 0.75rem 2rem;
         font-size: 0.9rem;
     }
 
-    /* === MEDIA PLAYER FIXES (CRITICAL) === */
+    /* === MEDIA PLAYER & FIXED GIF IN FOOTER (Mobile Only) === */
+
+    /* This overrides the default display: none and shows the elements inside the footer */
+    #media-player-container,
+    #video-link-fixed {
+        display: block !important;
+        /* Show the elements (now they are inside the footer HTML) */
+        position: static;
+        /* Force them to flow normally */
+        transform: none;
+        margin: 0 auto;
+        /* Center them horizontally in the footer */
+    }
+
     #media-player-container {
-        /* CRITICAL: Changed from fixed/absolute to static to flow normally */
-        position: static; 
-        order: 1; /* Place at the very top of the header content */
-        margin: 0 auto 20px auto; /* Add margin below player to push content down */
-        transform: none; 
-        width: 95%; 
+        width: 95%;
         max-width: 350px;
     }
-    
-    .player-content {
-        flex-direction: row; /* Keep the content horizontal within the player */
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    
-    .player-info {
-        width: 50%; 
-        flex-shrink: 1;
-    }
 
-    .player-controls {
-        width: 45%;
-        justify-content: flex-end; /* Push controls to the right */
-    }
-    
-    /* === FIXED GIF/VIDEO LINK FIXES === */
-    #video-link-fixed {
-        /* CRITICAL: Must be static/relative to be in the normal document flow */
-        position: static; 
-        margin: 1.5rem auto 0.5rem auto; 
-        transform: none; 
-        width: 50px; 
-        height: 50px;
-        display: block;
+    #video-link-fixed {
+        width: 80px;
+        height: 80px;
     }
-    
+
+    /* === FOOTER ORDERING === */
+    #video-link-fixed {
+        order: 1;
+    }
+
+    /* Place GIF first in the footer */
+    #media-player-container {
+        order: 2;
+    }
+
+    /* Place Player second */
+    footer p {
+        order: 3;
+    }
+
+    /* Place Copyright text last */
+
     /* === OTHER SECTIONS (Secondary fixes) === */
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.5rem;
         margin-top: 2rem;
-    }
+    }
+
     #stl-viewer-container {
         height: 300px;
     }
+
     #model-controls {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
         padding: 15px 10px;
-    }
+    }
 }
