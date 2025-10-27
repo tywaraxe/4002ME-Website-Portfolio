@@ -6,6 +6,9 @@
     --color-secondary-bg: #1a1a1a;
     --color-border: #333333;
     --font-primary: 'Inter', sans-serif;
+    /* 🏎️ Added Porsche-style font variable */
+    --font-porsche: '911 Porscha', sans-serif;
+    --font-porsche-bold: '911 Porscha Bold', sans-serif;
 }
 
 * {
@@ -32,6 +35,8 @@ h3 {
 }
 
 h2 {
+    /* 🏎️ Applied Porsche-style font to H2 */
+    font-family: var(--font-porsche);
     color: var(--color-accent);
     border-bottom: 2px solid var(--color-accent);
     display: inline-block;
@@ -75,6 +80,8 @@ section {
 }
 
 .project-title {
+    /* 🏎️ Applied Porsche-style font to Project Title */
+    font-family: var(--font-porsche-bold);
     font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 900;
     letter-spacing: 0.25em;
@@ -509,11 +516,6 @@ footer {
     body {
         padding-bottom: 70px;
         /* Still needed for player clearance */
-    }
-
-    /* === GENERAL STRUCTURE === */
-    section {
-        padding: 2rem 1rem;
     }
 
     /* === HERO SECTION FIXES (CRITICAL) === */
