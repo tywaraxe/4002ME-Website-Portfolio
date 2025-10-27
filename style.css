@@ -346,6 +346,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* Audio Player - Desktop Position - Hidden by default on small screens */
 #media-player-container {
+    /* DESKTOP STYLES: FIXED TO BOTTOM RIGHT */
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -426,7 +427,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 
-/* --- 7. FOOTER (Modified to hold mobile elements) --- */
+/* --- 7. FOOTER (Default styling) --- */
 
 footer {
     background: var(--color-secondary-bg);
@@ -435,12 +436,8 @@ footer {
     border-top: 2px solid var(--color-accent);
     font-size: 0.85rem;
     color: #999;
-
-    /* Setup Flex container for mobile stacking */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    /* Use default block flow for desktop */
+    display: block;
 }
 
 
@@ -462,6 +459,57 @@ footer {
 /* 📱 8. MOBILE RESPONSIVENESS (AGGRESSIVE FIXES) */
 /* ------------------------------------------------------------------- */
 @media (max-width: 768px) {
+
+    /* === CRITICAL FIX: REPOSITION RADIO TO BOTTOM OF SCREEN === */
+    #media-player-container {
+        /* Re-assert fixed positioning relative to viewport */
+        position: fixed !important;
+        top: auto !important;
+        /* Clear any fixed 'top' position it might inherit */
+        bottom: 0;
+        /* Pin to the bottom edge of the screen */
+        left: 0;
+        /* Pin to the left edge */
+        right: 0;
+        /* Pin to the right edge */
+        margin: 0;
+        /* Remove any centering margins */
+        width: 100%;
+        /* Full width */
+        max-width: none;
+        /* Remove max-width constraint */
+        border-radius: 0;
+        /* Sharp corners for a full-width bottom bar */
+        z-index: 9999;
+        /* Ensure it stays on top of all content */
+        display: block !important;
+        /* Make sure it's visible */
+    }
+
+    /* FIX: RE-SHOW & RE-POSITION GIF TO BOTTOM-LEFT CORNER */
+    #video-link-fixed {
+        position: fixed !important;
+        /* Make it fixed to the viewport */
+        bottom: 75px;
+        /* Position it above the radio player bar */
+        left: 10px;
+        /* Pin it to the left side */
+        right: auto;
+        top: auto;
+        width: 80px;
+        /* Smaller size for mobile */
+        height: 80px;
+        z-index: 9998;
+        /* Ensure it is visible, but below the radio player (9999) */
+        display: block !important;
+        /* Make sure it's visible */
+    }
+
+    /* Push the bottom of the body down so content doesn't get hidden behind the fixed player */
+    body {
+        padding-bottom: 70px;
+        /* Still needed for player clearance */
+    }
 
     /* === GENERAL STRUCTURE === */
     section {
@@ -496,47 +544,6 @@ footer {
         padding: 0.75rem 2rem;
         font-size: 0.9rem;
     }
-
-    /* === MEDIA PLAYER & FIXED GIF IN FOOTER (Mobile Only) === */
-
-    /* This overrides the default display: none and shows the elements inside the footer */
-    #media-player-container,
-    #video-link-fixed {
-        display: block !important;
-        /* Show the elements (now they are inside the footer HTML) */
-        position: static;
-        /* Force them to flow normally */
-        transform: none;
-        margin: 0 auto;
-        /* Center them horizontally in the footer */
-    }
-
-    #media-player-container {
-        width: 95%;
-        max-width: 350px;
-    }
-
-    #video-link-fixed {
-        width: 80px;
-        height: 80px;
-    }
-
-    /* === FOOTER ORDERING === */
-    #video-link-fixed {
-        order: 1;
-    }
-
-    /* Place GIF first in the footer */
-    #media-player-container {
-        order: 2;
-    }
-
-    /* Place Player second */
-    footer p {
-        order: 3;
-    }
-
-    /* Place Copyright text last */
 
     /* === OTHER SECTIONS (Secondary fixes) === */
     h2 {
