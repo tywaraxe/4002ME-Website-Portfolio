@@ -61,6 +61,8 @@ section {
     /* Desktop Parallax */
     height: 100vh;
     display: flex;
+    /* Changed to column and center to control stacking */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -453,104 +455,47 @@ footer {
         padding: 2rem 1rem;
     }
 
-    /* Parallax Performance Fix */
+    /* Hero Section Fixes (Crucial for screenshot issue) */
     .hero-parallax-section {
-        /* Disables fixed background on mobile for smoother scrolling performance */
         background-attachment: scroll;
+        /* The main fix for overlap: remove fixed height, let it be tall enough for its content */
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
-    /* Title and Tagline Sizing */
+    .hero-content {
+        /* Ensure the hero content sits above the audio player in the flow */
+        order: 2;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    /* Aggressively reduce font sizes to prevent overlap */
     .project-title {
         font-size: 1.8rem;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.1em;
+        /* Reduced spacing */
     }
 
     .project-tagline {
         font-size: 1rem;
         padding: 0 10px;
-        /* Add some padding to prevent overflow */
     }
 
-    /* Image Grids (Inspiration & Design) */
-    .image-grid {
-        /* Forces a single column layout on smaller screens */
-        grid-template-columns: 1fr;
-    }
-
-    /* 3D Model Controls */
-    #model-controls {
-        /* Force controls to stack vertically */
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 15px 10px;
-    }
-
-    #model-controls>div:last-child {
-        /* Ensure swatches wrap if necessary */
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    #stl-viewer-container {
-        /* Reduce the height of the 3D viewer on mobile */
-        height: 350px;
-    }
-
-    /* Team Grid */
-    .team-grid {
-        /* Forces a single column layout */
-        grid-template-columns: 1fr;
-    }
-
-    .team-member {
-        padding: 1rem;
-    }
-
-    /* Fixed Elements: Convert to static (or near-static) to prevent covering content and improve scroll */
-
-    /* GIF/Video Link */
-    #video-link-fixed {
-        /* Removed 'fixed' positioning. Now it sits in the footer flow. */
-        position: static;
-        margin: 1.5rem auto 0.5rem auto;
-        /* Centered in the footer */
-        transform: none;
-        /* Removed transform */
-        width: 100px;
-        height: 100px;
-        display: block;
-
-    }
-
-    /* Audio Player */
+    /* Media Player Fixes */
     #media-player-container {
-        /* Removed 'fixed' positioning. Stays in the header area. */
+        /* CRITICAL: Changed from fixed/absolute to static to flow normally inside the header */
         position: static;
-        margin: 2rem auto 0 auto;
+        order: 1;
+        /* Place at the top of the header on mobile */
+        margin: 10px auto 0 auto;
         transform: none;
         width: 95%;
         /* Use full width for a better UI experience */
         max-width: 400px;
-        /* Re-inject the audio player into the hero content flow by using absolute position within the static header, or simply let it flow */
     }
 
-    /* Re-position the Audio Player under the main hero content */
-    .hero-parallax-section {
-        /* Change from flex-align-center to flex-end so player can be positioned below content */
-        align-items: flex-end;
-    }
-
-    #media-player-container {
-        /* Absolute position under hero text but above the header's bottom edge */
-        position: absolute;
-        bottom: 20px;
-        right: 50%;
-        transform: translateX(50%);
-        width: 95%;
-        max-width: 400px;
-    }
-
-    /* Audio Player Layout Refinement */
     .player-content {
         flex-direction: column;
         align-items: flex-start;
@@ -558,7 +503,6 @@ footer {
 
     .player-info {
         width: 100%;
-        /* Take full width */
         margin-bottom: 5px;
     }
 
@@ -566,11 +510,50 @@ footer {
         width: 100%;
         margin-top: 5px;
         justify-content: flex-start;
-        /* Keep controls left-aligned */
     }
 
-    /* Volume Slider needs to take up most of the space */
     .player-controls input[type="range"] {
         flex-grow: 1;
+    }
+
+    /* Image Grids (Inspiration & Design) */
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 3D Model Controls */
+    #model-controls {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 15px 10px;
+    }
+
+    #model-controls>div:last-child {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #stl-viewer-container {
+        height: 350px;
+    }
+
+    /* Team Grid */
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-member {
+        padding: 1rem;
+    }
+
+    /* GIF/Video Link in Footer */
+    #video-link-fixed {
+        /* CRITICAL: Removed fixed position to prevent covering content */
+        position: static;
+        margin: 1.5rem auto 0.5rem auto;
+        transform: none;
+        width: 100px;
+        height: 100px;
+        display: block;
     }
 }
