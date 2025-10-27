@@ -450,19 +450,7 @@ footer {
         padding: 2rem 1rem;
     }
 
-    /* === HERO SECTION FIXES (CRITICAL) === */
-    .hero-parallax-section {
-        background-attachment: scroll; 
-        /* 1. Remove fixed height - CRITICAL for flow */
-        height: auto; 
-        padding-top: 40px; /* More top padding */
-        padding-bottom: 40px; /* More bottom padding */
-        
-        /* Ensure it's a flexible container for stacking */
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start; /* Start stacking from the top */
-    }
+    
     
     .hero-content {
         /* Ensure content is centered inside the flex container */
