@@ -450,16 +450,6 @@ footer {
         padding: 2rem 1rem;
     }
 
-    
-    
-    .hero-content {
-        /* Ensure content is centered inside the flex container */
-        width: 100%;
-        text-align: center;
-        order: 2; /* Place after the audio player */
-        padding: 0 10px; /* Reduced padding for better fit */
-    }
-
     /* 2. AGGRESSIVE FONT SIZING AND SPACING */
     .project-title {
         font-size: 1.8rem; /* Smaller title */
