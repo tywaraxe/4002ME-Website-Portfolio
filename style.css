@@ -441,119 +441,105 @@ footer {
 
 
 /* ------------------------------------------------------------------- */
-/* 📱 8. MOBILE RESPONSIVENESS */
+/* 📱 8. MOBILE RESPONSIVENESS (AGGRESSIVE FIXES) */
 /* ------------------------------------------------------------------- */
 @media (max-width: 768px) {
-
-    /* General Structure */
-    h2 {
-        font-size: 1.5rem;
-        margin-top: 2rem;
-    }
-
+    
+    /* === GENERAL STRUCTURE === */
     section {
-        padding: 2rem 1rem;
-    }
+        padding: 2rem 1rem;
+    }
 
-    /* Hero Section Fixes (Crucial for screenshot issue) */
+    /* === HERO SECTION FIXES (CRITICAL) === */
     .hero-parallax-section {
-        background-attachment: scroll;
-        /* The main fix for overlap: remove fixed height, let it be tall enough for its content */
-        height: auto;
-        padding-top: 20px;
-        padding-bottom: 20px;
+        background-attachment: scroll; 
+        /* 1. Remove fixed height - CRITICAL for flow */
+        height: auto; 
+        padding-top: 40px; /* More top padding */
+        padding-bottom: 40px; /* More bottom padding */
+        
+        /* Ensure it's a flexible container for stacking */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Start stacking from the top */
     }
-
+    
     .hero-content {
-        /* Ensure the hero content sits above the audio player in the flow */
-        order: 2;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        /* Ensure content is centered inside the flex container */
+        width: 100%;
+        text-align: center;
+        order: 2; /* Place after the audio player */
+        padding: 0 10px; /* Reduced padding for better fit */
     }
 
-    /* Aggressively reduce font sizes to prevent overlap */
+    /* 2. AGGRESSIVE FONT SIZING AND SPACING */
     .project-title {
-        font-size: 1.8rem;
-        letter-spacing: 0.1em;
-        /* Reduced spacing */
+        font-size: 1.8rem; /* Smaller title */
+        letter-spacing: 0.05em; /* Much tighter spacing */
+        line-height: 1.1; /* Tighter line height to prevent vertical overlap */
+        margin-bottom: 0.5rem;
     }
 
     .project-tagline {
-        font-size: 1rem;
-        padding: 0 10px;
+        font-size: 0.95rem; 
+        margin-bottom: 2rem; /* Ensure space before the CTA */
+    }
+    
+    .cta-button {
+        padding: 0.75rem 2rem;
+        font-size: 0.9rem;
     }
 
-    /* Media Player Fixes */
+    /* === MEDIA PLAYER FIXES (CRITICAL) === */
     #media-player-container {
-        /* CRITICAL: Changed from fixed/absolute to static to flow normally inside the header */
-        position: static;
-        order: 1;
-        /* Place at the top of the header on mobile */
-        margin: 10px auto 0 auto;
-        transform: none;
-        width: 95%;
-        /* Use full width for a better UI experience */
-        max-width: 400px;
+        /* CRITICAL: Changed from fixed/absolute to static to flow normally */
+        position: static; 
+        order: 1; /* Place at the very top of the header content */
+        margin: 0 auto 20px auto; /* Add margin below player to push content down */
+        transform: none; 
+        width: 95%; 
+        max-width: 350px;
     }
-
+    
     .player-content {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .player-info {
-        width: 100%;
-        margin-bottom: 5px;
-    }
-
-    .player-controls {
-        width: 100%;
-        margin-top: 5px;
-        justify-content: flex-start;
-    }
-
-    .player-controls input[type="range"] {
-        flex-grow: 1;
-    }
-
-    /* Image Grids (Inspiration & Design) */
-    .image-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* 3D Model Controls */
-    #model-controls {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 15px 10px;
-    }
-
-    #model-controls>div:last-child {
+        flex-direction: row; /* Keep the content horizontal within the player */
+        align-items: center;
+        justify-content: space-between;
         flex-wrap: wrap;
-        justify-content: center;
-    }
+    }
+    
+    .player-info {
+        width: 50%; 
+        flex-shrink: 1;
+    }
 
+    .player-controls {
+        width: 45%;
+        justify-content: flex-end; /* Push controls to the right */
+    }
+    
+    /* === FIXED GIF/VIDEO LINK FIXES === */
+    #video-link-fixed {
+        /* CRITICAL: Must be static/relative to be in the normal document flow */
+        position: static; 
+        margin: 1.5rem auto 0.5rem auto; 
+        transform: none; 
+        width: 100px; 
+        height: 100px;
+        display: block;
+    }
+    
+    /* === OTHER SECTIONS (Secondary fixes) === */
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+    }
     #stl-viewer-container {
-        height: 350px;
+        height: 300px;
     }
-
-    /* Team Grid */
-    .team-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .team-member {
-        padding: 1rem;
-    }
-
-    /* GIF/Video Link in Footer */
-    #video-link-fixed {
-        /* CRITICAL: Removed fixed position to prevent covering content */
-        position: static;
-        margin: 1.5rem auto 0.5rem auto;
-        transform: none;
-        width: 100px;
-        height: 100px;
-        display: block;
-    }
+    #model-controls {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 15px 10px;
+    }
 }
