@@ -2,7 +2,7 @@
 :root {
     --color-primary: #e0e0e0;
     --color-background: #0a0a0a;
-    --color-accent: #ff3333;
+    --color-accent: #33cfff;
     --color-secondary-bg: #1a1a1a;
     --color-border: #333333;
     --font-primary: 'Inter', sans-serif;
@@ -59,7 +59,7 @@ section {
 
 .hero-parallax-section {
     position: relative;
-    background-image: url('https://cdn.elferspot.com/wp-content/uploads/2021/04/CSW7547-2000x1333-1.jpeg');
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1c/Bugatti_35%2C_Bj_1924%2C_M_Nicolosi_-_1976.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -113,7 +113,7 @@ section {
     background-color: transparent;
     color: var(--color-accent);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 51, 51, 0.4);
+    box-shadow: 0 5px 15px rgba(51, 214, 255, 0.4);
 }
 
 /* --- 3. IMAGES & MEDIA --- */
@@ -140,12 +140,12 @@ section {
     height: auto;
     object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
+    box-shadow: 0 0 10px rgba(7, 238, 255, 0.3);
 }
 
 .image-grid img:hover {
     transform: scale(1.02);
-    box-shadow: 0 0 20px rgba(255, 51, 51, 0.6);
+    box-shadow: 0 0 20px rgba(51, 224, 255, 0.6);
 }
 
 /* Video Demonstration Container */
@@ -171,7 +171,7 @@ section {
 }
 
 #video-link-container:hover {
-    box-shadow: 0 0 25px rgba(255, 51, 51, 0.7);
+    box-shadow: 0 0 25px rgba(51, 241, 255, 0.7);
 }
 
 #video-link-container img {
@@ -185,7 +185,7 @@ section {
 /* --- 4. 3D VIEWER & CONTROLS --- */
 #stl-viewer-section {
     background-color: var(--color-secondary-bg);
-    box-shadow: 0 0 25px rgba(255, 51, 51, 0.7);
+    box-shadow: 0 0 25px rgba(51, 180, 255, 0.7);
     border-radius: 12px;
 }
 
@@ -197,7 +197,7 @@ section {
     border-radius: 12px;
     margin: 2rem auto;
     background-color: #0a0a0a;
-    box-shadow: 0 0 25px rgba(255, 51, 51, 0.7);
+    box-shadow: 0 0 25px rgba(51, 173, 255, 0.7);
     overflow: hidden;
 }
 
@@ -299,7 +299,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .team-member:hover {
-    box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
+    box-shadow: 0 0 15px rgba(51, 197, 255, 0.4);
 }
 
 .team-member .role {
@@ -333,7 +333,7 @@ input[type="range"]::-webkit-slider-thumb {
     border: 3px solid var(--color-accent);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 15px rgba(255, 51, 51, 0.7);
+    box-shadow: 0 0 15px rgba(51, 173, 255, 0.7);
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
     display: none;
@@ -405,7 +405,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .player-icon:hover {
-    background-color: #ff5555;
+    background-color: #5560ff;
     transform: scale(1.05);
 }
 
