@@ -26,6 +26,47 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // -------------------------------------------------------------------
+// --- Lightbox/Image Zoom Functionality ---
+function setupImageZoom() {
+    // 1. Select all images with the 'zoomable-image' class
+    const zoomableImages = document.querySelectorAll('.zoomable-image');
+
+    // 2. Dynamically create the lightbox container element
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    lightbox.classList.add('lightbox');
+    document.body.appendChild(lightbox);
+
+    // 3. Add event listener to CLOSE the lightbox when the overlay is clicked
+    lightbox.addEventListener('click', () => {
+        lightbox.classList.remove('active');
+        lightbox.innerHTML = ''; // Clear the content after closing
+    });
+
+    // 4. Add event listener to OPEN the lightbox when an image is clicked
+    zoomableImages.forEach(image => {
+        image.addEventListener('click', () => {
+            // Create the enlarged image element
+            const lightboxContent = document.createElement('img');
+            lightboxContent.src = image.src; // Use the original image source
+            lightboxContent.alt = image.alt;
+            lightboxContent.classList.add('lightbox-content');
+
+            // Insert the enlarged image into the lightbox and show it
+            lightbox.innerHTML = '';
+            lightbox.appendChild(lightboxContent);
+            lightbox.classList.add('active');
+        });
+    });
+}
+
+// It's good practice to run this function after the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Other setup/initialization code you may have...
+
+    // Setup the image zoom/lightbox functionality
+    setupImageZoom(); 
+});
 
 // -------------------------------------------------------------------
 // 📈 PARALLAX SCROLL EFFECT LOGIC
