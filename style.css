@@ -54,6 +54,54 @@ section {
     border-bottom: 1px solid var(--color-border);
     position: relative;
 }
+/* Make zoomable images look clickable */
+.zoomable-image {
+    cursor: zoom-in;
+    transition: transform 0.2s ease-in-out;
+}
+
+.zoomable-image:hover {
+    transform: scale(1.02);
+}
+
+/* Lightbox Modal Styles */
+.lightbox {
+    /* Fixed overlay spanning the entire viewport */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Dark, semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000; /* Ensure it's above all other content */
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out; /* Indicates it's clickable to close */
+}
+
+.lightbox.active {
+    /* Shown when the image is clicked */
+    display: flex;
+}
+
+.lightbox-content {
+    /* Enlarged image styling */
+    display: block;
+    max-width: 90%; /* Limits the size on large screens */
+    max-height: 90vh; /* Limits the height to the viewport height */
+    margin: auto;
+    /* Optional: Animate the image when it appears */
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.lightbox.active .lightbox-content {
+    transform: scale(1);
+    opacity: 1;
+}
 
 /* --- 2. HEADER & PARALLAX EFFECT (DESKTOP) --- */
 
