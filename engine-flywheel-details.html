@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline-8 Engine Details | Project 35B</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/911-porscha" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="details-header">
+        <h1 class="component-name">INLINE-8 ENGINE BLOCK</h1>
+        <p class="component-subtitle">Technical Specifications & Engineering Blueprint</p>
+        <a href="index.html#mechanical-components" class="back-link"><i class="fas fa-chevron-left"></i> Back to Project Overview</a>
+    </header>
+
+    <section id="specifications">
+        <h2>Key Specifications</h2>
+        <table>
+            <tr>
+                <th>Component</th>
+                <td>Inline-8 Engine Block</td>
+            </tr>
+            <tr>
+                <th>Displacement</th>
+                <td>2.0L to 2.3L (variable bore)</td>
+            </tr>
+            <tr>
+                <th>Power Output</th>
+                <td>90 - 140 HP</td>
+            </tr>
+            <tr>
+                <th>Years Used</th>
+                <td>1924 - 1930</td>
+            </tr>
+            <tr>
+                <th>Construction</th>
+                <td>Cast iron block with bronze cylinder heads</td>
+            </tr>
+            <tr>
+                <th>Unique Feature</th>
+                <td>Fixed cylinder head to block assembly</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="engineering-diagrams">
+        <h2>Engineering Diagrams</h2>
+        <div class="image-grid">
+            <img class="zoomable-image" src="assets/engine_blueprint.jpg" alt="Engine block blueprint">
+            <img class="zoomable-image" src="assets/engine_cutaway.jpg" alt="Engine cutaway diagram">
+        </div>
+        <p style="text-align: center; font-style: italic; margin-top: 1rem;">Detailed CAD renders showing the crankcase and internal oil passages.</p>
+    </section>
+
+    <section id="material-analysis">
+        <h2>Material Analysis</h2>
+        <p>The original design utilized a lightweight cast iron alloy for the block to manage thermal expansion, paired with a specialized bronze alloy for the heads, which offers superior heat dissipation compared to common aluminum alloys of the time. This combination was critical for performance in endurance racing.</p>
+    </section>
+
+    <footer>
+        <p>© 2025 Project 35B Engineering Documentation</p>
+    </footer>
+
+    <div id="media-player-container">
+        <audio id="stream-player" loop></audio>
+        <div class="player-content">
+            <div class="player-info">
+                <div class="player-icon" id="play-pause-btn">
+                    <span id="play-icon">▶</span>
+                    <span id="pause-icon" style="display: none;">❚❚</span>
+                </div>
+                <div class="song-details">
+                    <div id="stream-title" class="song-title">
+                        <a href="https://neurofm.live/" target="_blank"
+                            style="color: inherit; text-decoration: none;">NeuroFM</a>
+                    </div>
+                    <div id="stream-status" class="stream-status">Loading...</div>
+                </div>
+            </div>
+            <div class="player-controls">
+                <span class="volume-icon">🔊</span>
+                <input type="range" id="volume-slider" min="0" max="100" value="50">
+            </div>
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill" style="width: 50%;"></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://unpkg.com/tone@14.8.49/build/Tone.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
