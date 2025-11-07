@@ -2,57 +2,13 @@
 :root {
     --color-primary: #e0e0e0;
     --color-background: #0a0a0a;
-    --color-accent: #ff3333;
+    --color-accent: #33cfff;
     --color-secondary-bg: #1a1a1a;
     --color-border: #333333;
     --font-primary: 'Inter', sans-serif;
     /* 🏎️ Added Porsche-style font variable */
     --font-porsche: '911 Porscha', sans-serif;
     --font-porsche-bold: '911 Porscha Bold', sans-serif;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: var(--font-primary);
-    line-height: 1.6;
-    background-color: var(--color-background);
-    color: var(--color-primary);
-    overflow-x: hidden;
-}
-
-/* Base Headings */
-h1,
-h2,
-h3 {
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-h2 {
-    /* 🏎️ Applied Porsche-style font to H2 */
-    font-family: var(--font-porsche);
-    color: var(--color-accent);
-    border-bottom: 2px solid var(--color-accent);
-    display: inline-block;
-    padding-bottom: 0.5rem;
-    margin-top: 4rem;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    letter-spacing: 0.1em;
-}
-
-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    border-bottom: 1px solid var(--color-border);
-    position: relative;
 }
 /* Make zoomable images look clickable */
 .zoomable-image {
@@ -103,11 +59,55 @@ section {
     opacity: 1;
 }
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    overflow-x: hidden;
+}
+
+/* Base Headings */
+h1,
+h2,
+h3 {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+h2 {
+    /* 🏎️ Applied Porsche-style font to H2 */
+    font-family: var(--font-porsche);
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+}
+
+section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    border-bottom: 1px solid var(--color-border);
+    position: relative;
+}
+
 /* --- 2. HEADER & PARALLAX EFFECT (DESKTOP) --- */
 
 .hero-parallax-section {
     position: relative;
-    background-image: url('https://cdn.elferspot.com/wp-content/uploads/2021/04/CSW7547-2000x1333-1.jpeg');
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1c/Bugatti_35%2C_Bj_1924%2C_M_Nicolosi_-_1976.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -161,7 +161,7 @@ section {
     background-color: transparent;
     color: var(--color-accent);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 51, 51, 0.4);
+    box-shadow: 0 5px 15px rgba(51, 214, 255, 0.4);
 }
 
 /* --- 3. IMAGES & MEDIA --- */
@@ -188,12 +188,12 @@ section {
     height: auto;
     object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
+    box-shadow: 0 0 10px rgba(7, 238, 255, 0.3);
 }
 
 .image-grid img:hover {
     transform: scale(1.02);
-    box-shadow: 0 0 20px rgba(255, 51, 51, 0.6);
+    box-shadow: 0 0 20px rgba(51, 224, 255, 0.6);
 }
 
 /* Video Demonstration Container */
@@ -219,7 +219,7 @@ section {
 }
 
 #video-link-container:hover {
-    box-shadow: 0 0 25px rgba(255, 51, 51, 0.7);
+    box-shadow: 0 0 25px rgba(51, 241, 255, 0.7);
 }
 
 #video-link-container img {
@@ -233,7 +233,7 @@ section {
 /* --- 4. 3D VIEWER & CONTROLS --- */
 #stl-viewer-section {
     background-color: var(--color-secondary-bg);
-    box-shadow: 0 0 25px rgba(255, 51, 51, 0.7);
+    box-shadow: 0 0 25px rgba(51, 180, 255, 0.7);
     border-radius: 12px;
 }
 
@@ -245,7 +245,7 @@ section {
     border-radius: 12px;
     margin: 2rem auto;
     background-color: #0a0a0a;
-    box-shadow: 0 0 25px rgba(255, 51, 51, 0.7);
+    box-shadow: 0 0 25px rgba(51, 173, 255, 0.7);
     overflow: hidden;
 }
 
@@ -347,7 +347,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .team-member:hover {
-    box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
+    box-shadow: 0 0 15px rgba(51, 197, 255, 0.4);
 }
 
 .team-member .role {
@@ -381,7 +381,7 @@ input[type="range"]::-webkit-slider-thumb {
     border: 3px solid var(--color-accent);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 15px rgba(255, 51, 51, 0.7);
+    box-shadow: 0 0 15px rgba(51, 173, 255, 0.7);
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
     display: none;
@@ -453,7 +453,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .player-icon:hover {
-    background-color: #ff5555;
+    background-color: #5560ff;
     transform: scale(1.05);
 }
 
@@ -493,6 +493,274 @@ footer {
     color: #999;
     /* Use default block flow for desktop */
     display: block;
+}
+
+
+/* --- 9. MECHANICAL COMPONENTS SECTION --- */
+/*
+  This section styles the component cards grid based on the image provided,
+  ensuring it uses the defined color variables and typography.
+*/
+
+#mechanical-components {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.components-header .section-title {
+    /* Reuses the existing h2 style from the base CSS */
+    margin-bottom: 0.5rem;
+}
+
+.components-header .section-tagline {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: 3rem;
+}
+
+/* CSS Grid for the 4-column layout on desktop */
+.components-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+/* Base card styling */
+.component-card {
+    position: relative;
+    height: 450px; /* Tall card height */
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    background-color: var(--color-secondary-bg); /* Fallback dark background */
+    background-size: cover;
+    background-position: center center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.component-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 15px var(--color-accent);
+}
+
+/* Placeholder for component card images */
+.powertrain-card {
+    background-image: url('assets/GearBoxRender90.png'); /* GearBoxRender */
+}
+.chassis-card {
+    background-image: url('assets/chassismesh.png'); /* chassismesh 2 */
+}
+.suspension-card {
+    background-image: url('https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png'); /* Placeholder Image 3 */
+}
+.gear-card {
+    background-image: url('assets/gearmesh.png'); /* gearmesh */
+}
+/* You can add more cards here (e.g., .engine-card, .braking-card) with their respective background images */
+
+
+/* Dark gradient overlay for text legibility at the bottom */
+.card-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient from almost transparent at the top to dark at the bottom */
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        rgba(0, 0, 0, 0.9) 100%
+    );
+    z-index: 1;
+}
+
+/* Card Content (Flexbox to push content to the bottom) */
+.card-content {
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Pushes content to the bottom */
+}
+
+/* Badge Styling (for 'Powertrain' and '1924-1930') */
+.badge {
+    position: absolute;
+    top: 1rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--color-accent);
+    box-shadow: 0 0 5px rgba(51, 207, 255, 0.5);
+}
+
+.badge.category {
+    left: 1rem;
+}
+
+.badge.year {
+    right: 1rem;
+}
+
+/* Component Title */
+.component-title {
+    font-family: var(--font-porsche); /* Use Porsche font for titles */
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-primary);
+}
+
+/* Component Description */
+.component-description {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+/* Specs List (The accent bullet points) */
+.specs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 1.5rem 0;
+}
+
+.specs-list li {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.3rem;
+}
+
+/* Custom accent bullet point */
+.specs-list li::before {
+    content: "•";
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    line-height: 1;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+/* Technical Details Link */
+.details-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 0.75rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-border);
+    text-transform: uppercase;
+}
+
+.details-link i {
+    color: var(--color-accent);
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.details-link:hover {
+    color: var(--color-accent);
+}
+
+.details-link:hover i {
+    transform: translateX(3px);
+}
+
+/* --- Responsive Adjustments for Component Cards --- */
+
+@media (max-width: 1024px) {
+    .components-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .components-grid {
+        grid-template-columns: 1fr; /* Stacked on mobile */
+    }
+    .component-card {
+        height: 380px; /* Adjust height for smaller screens */
+    }
+}
+/* --- COMPONENT DETAILS PAGE STYLES (component-details.html) --- */
+
+.details-header {
+    background-color: var(--color-secondary-bg);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-bottom: 5px solid var(--color-accent);
+}
+
+.details-header .component-name {
+    font-family: var(--font-porsche-bold);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.details-header .component-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+}
+
+.back-link {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: var(--color-accent);
+}
+
+/* Table Styling for Specifications */
+#specifications table {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+#specifications th,
+#specifications td {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+}
+
+#specifications th {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+#specifications tr:nth-child(even) {
+    background-color: #0d0d0d;
 }
 
 
