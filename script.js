@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // -------------------------------------------------------------------
+
 // --- Lightbox/Image Zoom Functionality ---
 function setupImageZoom() {
     // 1. Select all images with the 'zoomable-image' class
@@ -67,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Setup the image zoom/lightbox functionality
     setupImageZoom(); 
 });
-
 // -------------------------------------------------------------------
 // 📈 PARALLAX SCROLL EFFECT LOGIC
 // -------------------------------------------------------------------
@@ -337,7 +337,7 @@ function loadAndPlayPls(plsFilePath) {
             // Due to browser security restrictions, playback must be initiated by user action.
             audioPlayer.play().catch(error => {
                 if (error.name === "NotAllowedError") {
-                    statusElement.innerHTML = 'Blocked! Please **click anywhere on the page** to start.';
+                    statusElement.innerHTML = 'Blocked! Please click anywhere on the page to start.';
                     statusElement.style.color = '#ffff00'; 
                     
                     // Add a one-time listener to start playback on user interaction
@@ -362,42 +362,65 @@ function loadAndPlayPls(plsFilePath) {
 }
 
 function setupPlayerControls() {
-    const audioPlayer = document.getElementById('stream-player');
-    const volumeSlider = document.getElementById('volume-slider');
-    const playPauseBtn = document.getElementById('play-pause-btn');
-    const playIcon = document.getElementById('play-icon');
-    const pauseIcon = document.getElementById('pause-icon');
-    
-    if (!audioPlayer || !volumeSlider || !playPauseBtn || !playIcon || !pauseIcon) return;
+    const audioPlayer = document.getElementById('stream-player');
+    const volumeSlider = document.getElementById('volume-slider');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const playIcon = document.getElementById('play-icon');
+    const pauseIcon = document.getElementById('pause-icon');
+    
+    if (!audioPlayer || !volumeSlider || !playPauseBtn || !playIcon || !pauseIcon) return;
 
-    // 1. Volume Control
-    audioPlayer.volume = volumeSlider.value / 100;
-    volumeSlider.addEventListener('input', () => {
-        audioPlayer.volume = volumeSlider.value / 100;
-    });
+    // --- 1. Volume Control (Persistence Added) ---
+    
+    // Check if a saved volume exists in localStorage (value is 0.0 to 1.0)
+    const savedVolume = parseFloat(localStorage.getItem('streamVolume'));
+    
+    // Determine the starting volume and set the audio player and slider UI
+    if (!isNaN(savedVolume)) {
+        // Use the **saved value** if it exists and is a valid number
+        audioPlayer.volume = savedVolume; 
+        volumeSlider.value = savedVolume * 100; // Convert 0.0-1.0 to 0-100 for the slider
+    } else {
+        // If nothing is saved, set initial volume to **0 (silent)**, as requested
+        audioPlayer.volume = 0; 
+        volumeSlider.value = 0; 
+        // Save this initial state so it's remembered next time
+        localStorage.setItem('streamVolume', 0);
+    }
 
-    // 2. Play/Pause Toggle
-    const updateIcon = (isPlaying) => {
-        playIcon.style.display = isPlaying ? 'none' : 'block';
-        pauseIcon.style.display = isPlaying ? 'block' : 'none';
-    };
+    // Listener to handle volume changes
+    volumeSlider.addEventListener('input', (event) => {
+        const newVolume = event.target.value / 100;
+        audioPlayer.volume = newVolume;
+        
+        // **Save the new volume value** to local storage for persistence
+        localStorage.setItem('streamVolume', newVolume); 
+    });
 
-    playPauseBtn.addEventListener('click', () => {
-        if (audioPlayer.paused) {
-            // Attempt to play, handling potential browser restrictions
-            audioPlayer.play().then(() => updateIcon(true)).catch(error => {
-                console.warn("Playback blocked by browser policy.", error);
-            });
-        } else {
-            audioPlayer.pause();
-            updateIcon(false);
-        }
-    });
+    // --- 2. Play/Pause Toggle (No Change) ---
+    
+    const updateIcon = (isPlaying) => {
+        playIcon.style.display = isPlaying ? 'none' : 'block';
+        pauseIcon.style.display = isPlaying ? 'block' : 'none';
+    };
 
-    // 3. Status Listeners (To keep the UI in sync with the audio state)
-    audioPlayer.onplaying = () => updateIcon(true);
-    audioPlayer.onpause = () => updateIcon(false);
-    audioPlayer.onloadedmetadata = () => updateIcon(!audioPlayer.paused);
-    // Set initial state (default to play icon visible if paused)
-    updateIcon(false); 
+    playPauseBtn.addEventListener('click', () => {
+        if (audioPlayer.paused) {
+            // Attempt to play, handling potential browser restrictions
+            audioPlayer.play().then(() => updateIcon(true)).catch(error => {
+                console.warn("Playback blocked by browser policy.", error);
+            });
+        } else {
+            audioPlayer.pause();
+            updateIcon(false);
+        }
+    });
+
+    // --- 3. Status Listeners (No Change) ---
+    
+    audioPlayer.onplaying = () => updateIcon(true);
+    audioPlayer.onpause = () => updateIcon(false);
+    audioPlayer.onloadedmetadata = () => updateIcon(!audioPlayer.paused);
+    // Set initial state (default to play icon visible if paused)
+    updateIcon(false); 
 }
