@@ -249,76 +249,7 @@ section {
     overflow: hidden;
 }
 
-/* Model Controls - Updated for Flexibility */
-#model-controls {
-    text-align: left;
-    margin: 1rem auto;
-    padding: 15px;
-    background-color: var(--color-secondary-bg);
-    border-radius: 10px;
-    border: 1px solid var(--color-border);
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px 25px;
-    align-items: center;
-    max-width: 900px;
-}
-
-#model-controls>div:last-child {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-#model-controls label {
-    color: var(--color-accent);
-    font-weight: 600;
-    font-size: 0.9rem;
-    display: block;
-    margin-bottom: 5px;
-}
-
-/* Swatch Buttons */
-.swatch {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 3px solid var(--color-primary);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    transition: transform 0.15s ease, border-color 0.15s ease;
-    background-color: currentColor;
-}
-
-.swatch:hover {
-    transform: scale(1.15);
-    border-color: var(--color-accent);
-}
-
-/* Range Slider Styling (Metallic Slider) */
-input[type="range"] {
-    width: 100%;
-    height: 4px;
-    background: var(--color-border);
-    border-radius: 2px;
-    -webkit-appearance: none;
-    appearance: none;
-    outline: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 14px;
-    height: 14px;
-    background: var(--color-accent);
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
-}
+/* The color picker/slider control block is removed here */
 
 .note {
     font-size: 0.75rem;
@@ -494,12 +425,22 @@ footer {
     /* Use default block flow for desktop */
     display: block;
 }
-
+/* componets */
+#mechanical-components-2 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid var(--color-border);
+    .components-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+}
 
 /* --- 9. MECHANICAL COMPONENTS SECTION --- */
 /*
-  This section styles the component cards grid based on the image provided,
-  ensuring it uses the defined color variables and typography.
+    This section styles the component cards grid based on the image provided,
+    ensuring it uses the defined color variables and typography.
 */
 
 #mechanical-components {
@@ -522,7 +463,7 @@ footer {
 /* CSS Grid for the 4-column layout on desktop */
 .components-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
 }
 
@@ -558,6 +499,14 @@ footer {
 }
 .gear-card {
     background-image: url('assets/gearmesh.png'); /* gearmesh */
+}
+
+.gear_sub-card {
+    background-image: url('assets/'); /* GearBoxRender */
+}
+
+.placeholder2-card {
+    background-image: url('assets/'); /* GearBoxRender */
 }
 /* You can add more cards here (e.g., .engine-card, .braking-card) with their respective background images */
 
@@ -873,9 +822,7 @@ footer {
         height: 300px;
     }
 
-    #model-controls {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 15px 10px;
-    }
+    /* The mobile adjustment for #model-controls is removed here */
 }
+
+/* latest */
