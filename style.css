@@ -301,6 +301,116 @@ section {
 
 /* --- 6. FIXED ELEMENTS (Audio Player and Video GIF) - DESKTOP ONLY --- */
 
+/* Fixed GIF/Video Link - Hidden by default on small screens */
+#video-link-fixed {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 120px;
+    height: 120px;
+    z-index: 1000;
+    border: 3px solid var(--color-accent);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(51, 173, 255, 0.7);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    display: none;
+    /* HIDDEN BY DEFAULT on small screens */
+}
+
+#video-link-fixed:hover {
+    transform: scale(1.02);
+}
+
+#gif-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Audio Player - Desktop Position - Hidden by default on small screens */
+#media-player-container {
+    /* DESKTOP STYLES: FIXED TO BOTTOM RIGHT */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(5px);
+    z-index: 100;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--color-accent);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+    display: none;
+    /* HIDDEN BY DEFAULT on small screens */
+}
+
+.player-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.song-details {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.player-icon {
+    width: 35px;
+    height: 35px;
+    background-color: var(--color-accent);
+    color: var(--color-secondary-bg);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.player-icon:hover {
+    background-color: #5560ff;
+    transform: scale(1.05);
+}
+
+.song-title a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.stream-status {
+    font-size: 0.75rem;
+    color: #999;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.volume-icon {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+}
 
 
 /* --- 7. FOOTER (Default styling) --- */
