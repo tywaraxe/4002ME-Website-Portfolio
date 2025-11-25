@@ -506,7 +506,7 @@ footer {
 }
 
 .placeholder2-card {
-    background-image: url('assets/'); /* GearBoxRender */
+    background-image: url('assets/BGMESH.png'); /* GearBoxRender */
 }
 /* You can add more cards here (e.g., .engine-card, .braking-card) with their respective background images */
 
