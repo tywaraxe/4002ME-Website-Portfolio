@@ -1,62 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Placeholder</title>
-    <style>
-        :root{--bg:#f6f7fb;--card:#ffffff;--muted:#6b7280;--accent:#6366f1}
-        html,body{height:100%}
-        body{
-            margin:0;
-            font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-            background:linear-gradient(180deg,var(--bg),#eef2ff);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            color:#111827;
-        }
-        .card{
-            background:var(--card);
-            border-radius:12px;
-            padding:36px;
-            box-shadow:0 8px 30px rgba(16,24,40,0.08);
-            text-align:center;
-            max-width:540px;
-            width:90%;
-        }
-        .icon{
-            width:72px;
-            height:72px;
-            margin:0 auto 18px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            border-radius:18px;
-            background:linear-gradient(135deg, rgba(99,102,241,0.12), rgba(99,102,241,0.06));
-            color:var(--accent);
-            font-weight:700;
-            font-size:28px;
-        }
-        h1{
-            margin:0 0 8px;
-            font-size:20px;
-        }
-        p{margin:0;color:var(--muted);font-size:14px}
-        .meta{margin-top:18px;font-size:12px;color:#9ca3af}
-        @media (prefers-color-scheme:dark){
-            :root{--bg:#0b1220;--card:#071127;--muted:#9ca3af;--accent:#8b5cf6}
-            body{background:linear-gradient(180deg,#071127,#061022)}
-            .card{box-shadow:0 8px 30px rgba(2,6,23,0.6)}
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bevel Gears Details | Project 35B/930</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/911-porscha" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <main class="card" role="main" aria-labelledby="title">
-        <div class="icon" aria-hidden="true">Φ</div>
-        <h1 id="title">Placeholder Page</h1>
-        <p>This is a simple placeholder. Replace this file with your content when ready.</p>
+    <header class="details-header">
+        <h1 class="component-name">Resin-printed Gearbox</h1>
+        <p class="component-subtitle">Technical Specifications & Engineering Blueprint</p>
+        <a href="index.html#mechanical-components" class="back-link"><i class="fas fa-chevron-left"></i> Back to Project Overview</a>
+    </header>
+
+    <section id="specifications">
+        <h2>Key Specifications</h2>
+        <table>
+            <tr>
+                <th>Component</th>
+                <td>Bevel Gear</td>
+            </tr>
         
-    </main>
+            <tr>
+                <th>Construction</th>
+                <td>3D FDM Printed</td>
+            </tr>
+            <tr>
+                <th>Unique Feature</th>
+                <td>Vertical and Horizontal movement can be achievable</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="engineering-diagrams">
+        <h2>Engineering Diagrams</h2>
+        <div class="image-grid">
+            <img class="zoomable-image" src="assets/BG.png" alt="BGBlender">
+            <img class="zoomable-image" src="assets/.png" alt="gearboxCAD">
+        </div>
+        
+    </section>
+
+    <section id="material-analysis">
+        <h2>Material Analysis</h2>
+        <p>The design utilized FDM printing for the bevel gear, paired with a specialised rod, which offers superior movement.</p>
+    </section>
+
+    <footer>
+        <p>© 2025 Project 35B Engineering Documentation</p>
+    </footer>
+
+    
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://unpkg.com/tone@14.8.49/build/Tone.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
+
