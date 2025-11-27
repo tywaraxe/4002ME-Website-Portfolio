@@ -494,6 +494,9 @@ footer {
 .chassis-card {
     background-image: url('assets/chassismesh.png'); /* chassismesh 2 */
 }
+.chassis2-card {
+    background-image: url('assets/c1.png'); /* chassismesh 2 */
+}
 .suspension-card {
     background-image: url('assets/PG.jpg'); /* Placeholder Image 3 */
 }
